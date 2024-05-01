@@ -2,10 +2,10 @@
 
 namespace StaffCollab\HebrewDate;
 
-use Zman\Zman;
 use Carbon\CarbonPeriodImmutable;
 use Illuminate\Support\Collection;
 use Zman\Exceptions\InvalidDateException;
+use Zman\Zman;
 
 class HebrewDate extends Zman
 {
@@ -147,7 +147,7 @@ class HebrewDate extends Zman
 
     public static function createFromJewishDate($year, $month, $day): self
     {
-        if ($month === 6 && !isJewishLeapYear($year)) {
+        if ($month === 6 && ! isJewishLeapYear($year)) {
             throw new InvalidDateException("{$year} is not a leap year.");
         }
 

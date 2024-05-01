@@ -127,6 +127,10 @@ class HebrewDate extends Zman
             $this->endOfHebrewMonth()
         )->days();
 
+        dd(collect($days)->each(function ($day) {
+            return self::parse($day);
+        }));
+
         return collect($days)->each(function ($day) {
             return self::parse($day);
         });

@@ -43,7 +43,7 @@ class HebrewDate extends Zman
     {
         $this->jewishYear += $year;
 
-        if($this->jewishMonth == 6 && ! $this->isJewishLeapYear()) {
+        if ($this->jewishMonth == 6 && ! $this->isJewishLeapYear()) {
             $this->jewishMonth++;
         }
 
@@ -54,7 +54,7 @@ class HebrewDate extends Zman
     {
         $this->jewishYear -= $year;
 
-        if($this->jewishMonth == 6 && ! $this->isJewishLeapYear()) {
+        if ($this->jewishMonth == 6 && ! $this->isJewishLeapYear()) {
             $this->jewishMonth++;
         }
 

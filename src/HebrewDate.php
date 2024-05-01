@@ -2,9 +2,10 @@
 
 namespace StaffCollab\HebrewDate;
 
+use Zman\Zman;
 use Carbon\CarbonPeriodImmutable;
 use Illuminate\Support\Collection;
-use Zman\Zman;
+use Zman\Exceptions\InvalidDateException;
 
 class HebrewDate extends Zman
 {
@@ -136,5 +137,14 @@ class HebrewDate extends Zman
         }
 
         return $years;
+    }
+
+    function toSecular($month, $day, $year)
+    {
+        if ($month === 6 && !isJewishLeapYear($year)) {
+            throw new InvalidDateException("{$year} is not a leap year.");
+        }
+
+        return HebrewDate::parse(jdtogregorian(jewishtojd($month, $day, $year)));
     }
 }

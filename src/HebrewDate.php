@@ -35,24 +35,28 @@ class HebrewDate extends Zman
     public function addHebrewYears(int $year = 1): self
     {
         $this->jewishYear += $year;
+
         return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function subHebrewYears(int $year = 1): self
     {
         $this->jewishYear -= $year;
+
         return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function startOfHebrewMonth(): self
     {
         $this->jewishDay = 1;
+
         return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function endOfHebrewMonth(): self
     {
         $this->startOfHebrewMonth()->addHebrewMonths()->subDay();
+
         return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
@@ -60,12 +64,14 @@ class HebrewDate extends Zman
     {
         $this->jewishMonth = 1;
         $this->jewishDay = 1;
+
         return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function endOfHebrewYear(): self
     {
         $this->startOfHebrewYear()->addHebrewYears()->subDay();
+
         return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 

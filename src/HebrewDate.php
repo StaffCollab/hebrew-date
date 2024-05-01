@@ -164,6 +164,15 @@ class HebrewDate extends Zman
             throw new InvalidDateException("{$year} is not a leap year.");
         }
 
-        return HebrewDate::parse(jdtogregorian(jewishtojd($month, $day, $year)));
+        return self::parse(jdtogregorian(jewishtojd($month, $day, $year)));
+    }
+
+    public function getCalendarInfo($lang = 'gregorian'): array
+    {
+      return [
+        'days' => $lang == 'hebrew' ? $this->getHebrewDaysPeriod() : $this->getDaysPeriod(),
+        'months' => $lang == 'hebrew' ? $this->getHebrewMonthsPeriod() : $this->getMonthsPeriod(),
+        'years' => $lang == 'hebrew' ? $this->getHebrewYearsPeriod() : $this->getYearsPeriod()
+      ];
     }
 }

@@ -169,10 +169,10 @@ class HebrewDate extends Zman
 
     public function getCalendarInfo($lang = 'gregorian'): array
     {
-      return [
-        'days' => $lang == 'hebrew' ? $this->getHebrewDaysPeriod() : $this->getDaysPeriod(),
-        'months' => $lang == 'hebrew' ? $this->getHebrewMonthsPeriod() : $this->getMonthsPeriod(),
-        'years' => $lang == 'hebrew' ? $this->getHebrewYearsPeriod() : $this->getYearsPeriod()
-      ];
+        return [
+            'days' => $lang == 'hebrew' ? $this->getHebrewDaysPeriod() : $this->getDaysPeriod(),
+            'months' => $lang == 'hebrew' ? $this->getHebrewMonthsPeriod() : $this->getMonthsPeriod(),
+            'years' => $lang == 'hebrew' ? $this->getHebrewYearsPeriod() : $this->getYearsPeriod(),
+        ];
     }
 }

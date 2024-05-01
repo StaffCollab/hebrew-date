@@ -11,10 +11,13 @@ class HebrewDate extends Zman
 {
     public function addHebrewMonths(int $month = 1): self
     {
-        $this->isJewishLeapYear() ? $months = 13 : $months = 12;
-
         while ($month) {
-            $this->jewishMonth < $months ? $this->jewishMonth++ : ($this->jewishYear++ && $this->jewishMonth = 1);
+            $this->jewishMonth < 13 ? $this->jewishMonth++ : ($this->jewishYear++ && $this->jewishMonth = 1);
+
+            if ($this->jewishMonth == 6 && ! $this->isJewishLeapYear()) {
+                $this->jewishMonth++;
+            }
+
             $month--;
         }
 
@@ -23,10 +26,13 @@ class HebrewDate extends Zman
 
     public function subHebrewMonths(int $month = 1): self
     {
-        $this->isJewishLeapYear() ? $months = 13 : $months = 12;
-
         while ($month) {
-            $this->jewishMonth > 1 ? $this->jewishMonth-- : ($this->jewishYear-- && $this->jewishMonth = $months);
+            $this->jewishMonth > 1 ? $this->jewishMonth-- : ($this->jewishYear-- && $this->jewishMonth = 13);
+
+            if ($this->jewishMonth == 6 && ! $this->isJewishLeapYear()) {
+                $this->jewishMonth--;
+            }
+
             $month--;
         }
 
@@ -121,9 +127,8 @@ class HebrewDate extends Zman
         $months = collect();
 
         $this->startOfHebrewYear();
-        $count = $this->isJewishLeapYear() ? 13 : 12;
 
-        for ($i = 0; $i < $count; $i++) {
+        for ($i = 0; $i < 13; $i++) {
             $months->push($lang == 'hebrew' ? $this->copy()->jewishMonthNameHebrew : $this->copy()->jewishMonthName);
             $this->addHebrewMonths();
         }

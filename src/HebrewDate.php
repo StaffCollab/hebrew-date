@@ -145,7 +145,7 @@ class HebrewDate extends Zman
         return $years;
     }
 
-    function toSecular($month, $day, $year)
+    public static function createFromJewishDate($year, $month, $day): self
     {
         if ($month === 6 && !isJewishLeapYear($year)) {
             throw new InvalidDateException("{$year} is not a leap year.");

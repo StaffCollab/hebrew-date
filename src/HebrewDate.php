@@ -2,10 +2,9 @@
 
 namespace StaffCollab\HebrewDate;
 
-use Zman\Zman;
-use Illuminate\Support\Carbon;
 use Carbon\CarbonPeriodImmutable;
 use Illuminate\Support\Collection;
+use Zman\Zman;
 
 class HebrewDate extends Zman
 {
@@ -36,24 +35,28 @@ class HebrewDate extends Zman
     public function addHebrewYears(int $year = 1): self
     {
         $this->jewishYear += $year;
+
         return $this;
     }
 
     public function subHebrewYears(int $year = 1): self
     {
         $this->jewishYear -= $year;
+
         return $this;
     }
 
     public function startOfHebrewMonth(): self
     {
         $this->jewishDay = 1;
+
         return $this;
     }
 
     public function endOfHebrewMonth(): self
     {
         $this->startOfHebrewMonth()->addHebrewMonths()->subDay();
+
         return $this;
     }
 
@@ -61,12 +64,14 @@ class HebrewDate extends Zman
     {
         $this->jewishMonth = 1;
         $this->jewishDay = 1;
+
         return $this;
     }
 
     public function endOfHebrewYear(): self
     {
         $this->startOfHebrewYear()->addHebrewYears()->subDay();
+
         return $this;
     }
 

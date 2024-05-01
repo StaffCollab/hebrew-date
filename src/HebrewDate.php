@@ -70,9 +70,9 @@ class HebrewDate extends Zman
 
     public function endOfHebrewMonth(): self
     {
-        $this->startOfHebrewMonth()->addHebrewMonths()->subDay();
+        $newDate = $this->copy()->startOfHebrewMonth()->addHebrewMonths()->subDay();
 
-        return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
+        return self::createFromJewishDate($newDate->jewishYear, $newDate->jewishMonth, $newDate->jewishDay);
     }
 
     public function startOfHebrewYear(): self
@@ -85,9 +85,9 @@ class HebrewDate extends Zman
 
     public function endOfHebrewYear(): self
     {
-        $this->startOfHebrewYear()->addHebrewYears()->subDay();
+        $newDate = $this->copy()->startOfHebrewYear()->addHebrewYears()->subDay();
 
-        return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
+        return self::createFromJewishDate($newDate->jewishYear, $newDate->jewishMonth, $newDate->jewishDay);
     }
 
     public function getDaysPeriod(): Collection

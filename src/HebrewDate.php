@@ -2,10 +2,9 @@
 
 namespace StaffCollab\HebrewDate;
 
-use Zman\Zman;
-use Illuminate\Support\Carbon;
 use Carbon\CarbonPeriodImmutable;
 use Illuminate\Support\Collection;
+use Zman\Zman;
 
 class HebrewDate extends Zman
 {

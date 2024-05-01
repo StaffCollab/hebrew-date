@@ -18,7 +18,7 @@ class HebrewDate extends Zman
             $month--;
         }
 
-        return $this;
+        return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function subHebrewMonths(int $month = 1): self
@@ -30,44 +30,44 @@ class HebrewDate extends Zman
             $month--;
         }
 
-        return $this;
+        return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function addHebrewYears(int $year = 1): self
     {
         $this->jewishYear += $year;
-        return $this;
+        return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function subHebrewYears(int $year = 1): self
     {
         $this->jewishYear -= $year;
-        return $this;
+        return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function startOfHebrewMonth(): self
     {
         $this->jewishDay = 1;
-        return $this;
+        return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function endOfHebrewMonth(): self
     {
         $this->startOfHebrewMonth()->addHebrewMonths()->subDay();
-        return $this;
+        return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function startOfHebrewYear(): self
     {
         $this->jewishMonth = 1;
         $this->jewishDay = 1;
-        return $this;
+        return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function endOfHebrewYear(): self
     {
         $this->startOfHebrewYear()->addHebrewYears()->subDay();
-        return $this;
+        return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function getDaysPeriod(): Collection

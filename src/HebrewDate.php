@@ -43,12 +43,20 @@ class HebrewDate extends Zman
     {
         $this->jewishYear += $year;
 
+        if($this->jewishMonth == 6 && ! $this->isJewishLeapYear()) {
+            $this->jewishMonth++;
+        }
+
         return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }
 
     public function subHebrewYears(int $year = 1): self
     {
         $this->jewishYear -= $year;
+
+        if($this->jewishMonth == 6 && ! $this->isJewishLeapYear()) {
+            $this->jewishMonth++;
+        }
 
         return self::createFromJewishDate($this->jewishYear, $this->jewishMonth, $this->jewishDay);
     }

@@ -27,5 +27,4 @@ class HebrewDatePicker extends Field
 
         return $this;
     }
-
 }
